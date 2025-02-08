@@ -8,6 +8,8 @@ const {
 const BaseEvent = require("../classes/Event.js");
 const Bot = require("../classes/Bot.js");
 const googleBuilder = require("../functions/googleBuilder.js");
+const changelogModal = require("../modals/changelog.js");
+
 
 module.exports = class extends BaseEvent {
   constructor() {
@@ -29,6 +31,12 @@ module.exports = class extends BaseEvent {
           ephemeral: true,
           content: ":x: This command wasn't found.",
         });
+
+
+      if (interaction.commandName === "changelog") {
+       
+        await interaction.showModal(changelogModal); 
+      }  
 
       if (
         !command.config.userAvailable &&

@@ -23,12 +23,16 @@
   const {
     registerEvents,
     registerCommands,
+    registerModals, 
     registerInfoCommands,
   } = require("./src/functions/register");
+  
   await registerEvents(client, "../events");
   await registerCommands(client, "../commands");
+  await registerModals(client, "../modals");  
   await registerInfoCommands(client);
-  client.Logger.info(`Registered ${client.commands.size} commands`, "COMMANDS");
+  
+  client.Logger.info(`Registered ${client.commands.size} commands and ${client.modals.size} modals`, "COMMANDS");
 
   await client.login(client.config.BOT_TOKEN);
 
